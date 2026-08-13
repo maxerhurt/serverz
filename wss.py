@@ -1,4 +1,4 @@
-from websocket_serer import WebsocketServer
+from websocket_server import WebsocketServer
 
 def z(client, server, message):
     server.send_message_to_all(message)
