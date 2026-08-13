@@ -1,22 +1,8 @@
-from websockets.sync.server import serve
-from websockets.sync.server import Server
-#setup
-print("WS Server by Sol S")
+from websocket_serer import WebsocketServer
 
-#meta
-meta_name="Example WS server"
-meta_version="1.0"
-meta_owner="Admin"
-def echo(ws):
-    global meta_owner
-    global meta_name
-    global meta_version
-    while True:
-        f=ws.recv()
-        print("Got: ", f)
-        if f=="meta":
-            X="meta Name: "+meta_name+" \n Version: "+meta_version+" \n Owner: "+meta_owner
-            ws.send(X)
-        else:
-            ws.server.broadcast(f)
-serve(echo, "0.0.0.0", 6752).serve_forever()
+def z(client, server, message):
+    server.send_message_to_all(message)
+
+srv=WebsocketServer(host='0.0.0.0', port=6752)
+srv.set_fn_message_recieved(z)
+srv.run_forever()
