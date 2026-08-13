@@ -1,5 +1,5 @@
 from websockets.sync.server import serve
-from websockets.sync.server import server
+from websockets.sync.server import Server
 #setup
 print("WS Server by Sol S")
 
